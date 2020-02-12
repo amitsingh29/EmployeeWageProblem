@@ -1,7 +1,6 @@
 #!/bin/bash
 <<<<<<< HEAD
 echo "Welcome to Employee Wage Computation"
-=======
 attendance=0
 checkAttendance(){
 	attendance=$((RANDOM%2))
@@ -13,4 +12,13 @@ checkAttendance(){
 	fi
 }
 checkAttendance
->>>>>>> useCase1-Attendance
+=======
+wagePerHour=20
+fullDayHour=8
+dailyWage()
+{
+dailyEmployeeWage=$((wagePerHour*fullDayHour))
+echo "daily wage of employee is: $dailyEmployeeWage"
+}
+dailyWage
+>>>>>>> useCase2-DailyWage
