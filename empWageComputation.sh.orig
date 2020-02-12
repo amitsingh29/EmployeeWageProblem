@@ -1,5 +1,5 @@
-#!/bin/bash
 <<<<<<< HEAD
+#!/bin/bash
 echo "Welcome to Employee Wage Computation"
 attendance=0
 checkAttendance(){
@@ -12,7 +12,6 @@ checkAttendance(){
 	fi
 }
 checkAttendance
-=======
 wagePerHour=20
 fullDayHour=8
 dailyWage()
@@ -21,4 +20,14 @@ dailyEmployeeWage=$((wagePerHour*fullDayHour))
 echo "daily wage of employee is: $dailyEmployeeWage"
 }
 dailyWage
->>>>>>> useCase2-DailyWage
+=======
+#!//bin/bash
+partTimeHour=4
+wagePerHour=20
+partWage()
+{
+	partTimeWage=$((partTimeHour*wagePerHour))
+	echo "Part time wage of employee is: $partTimeWage"
+}
+partWage
+>>>>>>> useCase3-PartTimeWage
