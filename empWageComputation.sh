@@ -19,13 +19,13 @@ partWage()
 }
 case $number in
 	1)
-	dailyWage
-	;;
+		dailyWage
+		;;
 
 	2)
-	partWage
-    ;;
-
-    *)
-	;;
+		partWage
+		;;
+	*)
+		echo "Enter valid input"
+		;;
 esac
