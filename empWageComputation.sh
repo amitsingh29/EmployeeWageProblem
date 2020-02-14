@@ -28,6 +28,7 @@ dailyEmployeeWage=$((wagePerHour*fullDayHour))
 echo "daily wage of employee is: $dailyEmployeeWage"
 }
 dailyWage
+
 #!//bin/bash
 partTimeHour=4
 wagePerHour=20
@@ -56,12 +57,10 @@ esac
 workingDays=0
 count=0
 monthlyWage=0
-
 time=0
 days=0
 workingDays=0
 wages=0
-
 wagePerHour=20
 fullDayHour=8
 partTimeHour=4
@@ -87,6 +86,7 @@ checkAttendance()
 		return 1
 	fi
 }
+
 
 
 calculateMonthlyWage()
@@ -142,6 +142,10 @@ esac
 calculateMonthlyWage
 
 
+calculateWorkingHours()
+{
+	hours=$1
+
 	while(($time<=100 && $days!=20))
 	do
 		checkAttendance
@@ -149,6 +153,7 @@ calculateMonthlyWage
 		if(($result==1))
 		then
 			workingDays=$((workingDays+1))
+
 			time=$((time+8))
 			if (($time>100))
 			then
@@ -181,6 +186,34 @@ calculateMonthlyWage
 			days=$((days+1))
 		done
 		echo $wages
+
+			time=$((time+hours))
+			if((time>100))
+			then
+				time=100
+				return
+			fi
+		fi
+		days=$((days+1))
+	done
+}
+
+
+
+
+	echo "Enter a number"
+	read number
+
+	case $number in
+	1)
+	calculateWorkingHours 4
+	wages=$((time*20))
+	;;
+
+	2)
+	calculateWorkingHours 8
+	wages=$((time*20))
+
 	;;
 
 	*)
@@ -188,6 +221,8 @@ calculateMonthlyWage
 esac
 }
 calculateWage
-echo "total working day:$days"
+echo "total working days:$days"
 echo "total working hours:$time"
+echo "Total working hours: $time"
+echo "Total monthly wage: $wages"
 

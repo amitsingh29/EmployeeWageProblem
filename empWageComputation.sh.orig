@@ -57,12 +57,17 @@ esac
 workingDays=0
 count=0
 monthlyWage=0
+
 =======
+>>>>>>> useCase7-RefactorTheCode
 time=0
 days=0
 workingDays=0
 wages=0
->>>>>>> useCase6-TotalWorkingHours
+<<<<<<< HEAD
+
+=======
+>>>>>>> useCase7-RefactorTheCode
 wagePerHour=20
 fullDayHour=8
 partTimeHour=4
@@ -90,17 +95,17 @@ checkAttendance()
 }
 
 <<<<<<< HEAD
+
 calculateMonthlyWage()
-=======
+
 calculateWage()
->>>>>>> useCase6-TotalWorkingHours
 {
 	echo "Enter a number"
 	read number
 
 	case $number in
 	1)
-<<<<<<< HEAD
+
 	while ((count!=20))
 	do
 		checkAttendance
@@ -143,7 +148,12 @@ esac
 }
 calculateMonthlyWage
 
+
 =======
+calculateWorkingHours()
+{
+	hours=$1
+>>>>>>> useCase7-RefactorTheCode
 	while(($time<=100 && $days!=20))
 	do
 		checkAttendance
@@ -151,6 +161,7 @@ calculateMonthlyWage
 		if(($result==1))
 		then
 			workingDays=$((workingDays+1))
+<<<<<<< HEAD
 			time=$((time+8))
 			if (($time>100))
 			then
@@ -183,13 +194,46 @@ calculateMonthlyWage
 			days=$((days+1))
 		done
 		echo $wages
+=======
+			time=$((time+hours))
+			if((time>100))
+			then
+				time=100
+				return
+			fi
+		fi
+		days=$((days+1))
+	done
+}
+
+
+
+
+	echo "Enter a number"
+	read number
+
+	case $number in
+	1)
+	calculateWorkingHours 4
+	wages=$((time*20))
+	;;
+
+	2)
+	calculateWorkingHours 8
+	wages=$((time*20))
+>>>>>>> useCase7-RefactorTheCode
 	;;
 
 	*)
 	echo "Invalid input"
 esac
+<<<<<<< HEAD
 }
 calculateWage
 echo "total working day:$days"
 echo "total working hours:$time"
->>>>>>> useCase6-TotalWorkingHours
+
+=======
+echo "Total working hours: $time"
+echo "Total monthly wage: $wages"
+>>>>>>> useCase7-RefactorTheCode
