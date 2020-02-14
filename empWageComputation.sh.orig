@@ -81,14 +81,19 @@ dailyWage()
 checkAttendance()
 {
 	if (($RANDOM%2==0))
-=======
 declare -A dailyWage
 wages=0
 days=0
 checkAttendance()
 {
 	if (($((RANDOM%2))==0))
->>>>>>> useCase8-StoreDailyWage
+=======
+declare -a dailyWage
+wages=0
+days=0
+checkAttendance(){
+	if(( $((RANDOM%2))==0 ))
+>>>>>>> useCase9-TotalWage
 	then
 		return 0
 	else
@@ -97,6 +102,7 @@ checkAttendance()
 }
 
 <<<<<<< HEAD
+
 
 
 calculateMonthlyWage()
@@ -182,11 +188,17 @@ calculateWorkingHours()
 
 	2)
 	while(($days!=20 && $time<=100))
+=======
+calculateWorkingHours(){
+	wage=$1
+	while((days!=20))
+>>>>>>> useCase9-TotalWage
 	do
 		checkAttendance
 		result=$?
 		if(($result==1))
 		then
+<<<<<<< HEAD
 			workingDays=$((workingDays+1))
 			time=$((time+4))
 			partWage
@@ -203,11 +215,17 @@ calculateWorkingHours()
 				time=100
 				return
 			fi
+=======
+			dailyWage[$days]=$wage
+		else
+			dailyWage[$days]=0
+>>>>>>> useCase9-TotalWage
 		fi
 		days=$((days+1))
 	done
 }
 
+<<<<<<< HEAD
 
 
 
@@ -236,7 +254,7 @@ echo "total working hours:$time"
 echo "Total working hours: $time"
 echo "Total monthly wage: $wages"
 
-=======
+
 calculateWorkinghours()
 {
 	wage=$1
@@ -260,4 +278,13 @@ for((i=0;i<20;i++))
 do 
 	echo -n "${dailyWage[$i]}"
 done
->>>>>>> useCase8-StoreDailyWage
+
+=======
+calculateWorkingHours 160
+
+echo "Daily Wage"
+for((i=0;i<20;i++))
+do
+	printf  "Day %02d: ${dailyWage[$i]}\n" "$((i+1))"
+done
+>>>>>>> useCase9-TotalWage

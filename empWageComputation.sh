@@ -86,15 +86,18 @@ days=0
 checkAttendance()
 {
 	if (($((RANDOM%2))==0))
+
+declare -a dailyWage
+wages=0
+days=0
+checkAttendance(){
+	if(( $((RANDOM%2))==0 ))
 	then
 		return 0
 	else
 		return 1
 	fi
 }
-
-
-
 
 calculateMonthlyWage()
 
@@ -179,6 +182,9 @@ calculateWorkingHours()
 
 	2)
 	while(($days!=20 && $time<=100))
+calculateWorkingHours(){
+	wage=$1
+	while((days!=20))
 	do
 		checkAttendance
 		result=$?
@@ -200,13 +206,13 @@ calculateWorkingHours()
 				time=100
 				return
 			fi
+			dailyWage[$days]=$wage
+		else
+			dailyWage[$days]=0
 		fi
 		days=$((days+1))
 	done
 }
-
-
-
 
 	echo "Enter a number"
 	read number
@@ -256,5 +262,12 @@ echo "daily wage:"
 for((i=0;i<20;i++))
 do 
 	echo -n "${dailyWage[$i]}"
+done
+
+calculateWorkingHours 160
+echo "Daily Wage"
+for((i=0;i<20;i++))
+do
+	printf  "Day %02d: ${dailyWage[$i]}\n" "$((i+1))"
 done
 
