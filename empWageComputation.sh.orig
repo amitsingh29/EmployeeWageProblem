@@ -29,6 +29,7 @@ dailyEmployeeWage=$((wagePerHour*fullDayHour))
 echo "daily wage of employee is: $dailyEmployeeWage"
 }
 dailyWage
+
 #!//bin/bash
 partTimeHour=4
 wagePerHour=20
@@ -57,17 +58,10 @@ esac
 workingDays=0
 count=0
 monthlyWage=0
-
-=======
->>>>>>> useCase7-RefactorTheCode
 time=0
 days=0
 workingDays=0
 wages=0
-<<<<<<< HEAD
-
-=======
->>>>>>> useCase7-RefactorTheCode
 wagePerHour=20
 fullDayHour=8
 partTimeHour=4
@@ -87,6 +81,14 @@ dailyWage()
 checkAttendance()
 {
 	if (($RANDOM%2==0))
+=======
+declare -A dailyWage
+wages=0
+days=0
+checkAttendance()
+{
+	if (($((RANDOM%2))==0))
+>>>>>>> useCase8-StoreDailyWage
 	then
 		return 0
 	else
@@ -95,6 +97,7 @@ checkAttendance()
 }
 
 <<<<<<< HEAD
+
 
 calculateMonthlyWage()
 
@@ -149,11 +152,10 @@ esac
 calculateMonthlyWage
 
 
-=======
 calculateWorkingHours()
 {
 	hours=$1
->>>>>>> useCase7-RefactorTheCode
+
 	while(($time<=100 && $days!=20))
 	do
 		checkAttendance
@@ -161,7 +163,7 @@ calculateWorkingHours()
 		if(($result==1))
 		then
 			workingDays=$((workingDays+1))
-<<<<<<< HEAD
+
 			time=$((time+8))
 			if (($time>100))
 			then
@@ -194,7 +196,7 @@ calculateWorkingHours()
 			days=$((days+1))
 		done
 		echo $wages
-=======
+
 			time=$((time+hours))
 			if((time>100))
 			then
@@ -221,19 +223,41 @@ calculateWorkingHours()
 	2)
 	calculateWorkingHours 8
 	wages=$((time*20))
->>>>>>> useCase7-RefactorTheCode
+
 	;;
 
 	*)
 	echo "Invalid input"
 esac
-<<<<<<< HEAD
 }
 calculateWage
-echo "total working day:$days"
+echo "total working days:$days"
 echo "total working hours:$time"
-
-=======
 echo "Total working hours: $time"
 echo "Total monthly wage: $wages"
->>>>>>> useCase7-RefactorTheCode
+
+=======
+calculateWorkinghours()
+{
+	wage=$1
+	while((days!=20))
+	do
+	checkAttendance
+	result=$?
+	if(($result==1))
+	then
+		dailyWage[$days]=$wage
+	else
+		dailyWage[$days]=0
+	fi
+	days=$((days+1))
+done
+}
+
+calculateWorkinghours 160
+echo "daily wage:"
+for((i=0;i<20;i++))
+do 
+	echo -n "${dailyWage[$i]}"
+done
+>>>>>>> useCase8-StoreDailyWage
